@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Número de Incêndios nos Últimos Anos</title>
+    
+    <!-- Adicionar a classe de estilo para o fundo -->
+    <style>
+        .background {
+            background-image: url('https://cdn.midjourney.com/30e456dc-1163-42bf-8109-9c339faf4c5d/0_0.png'); /* Substitua pelo caminho da sua imagem */
+            background-size: cover; /* Cobrirá toda a área */
+            background-position: center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Não repetirá a imagem */
+            width: 100%;
+            height: 100vh; /* Define altura mínima da página */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .h1{
+            color:aliceblue;
+            text-align: center;
+            
+        }
+
+        #chart_div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+        }
+    </style>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // Carregar a API de visualização do Google
+        google.charts.load('current', {'packages':['corechart']});
+
+        // Definir função callback para desenhar o gráfico
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Definindo os dados
+            var data = google.visualization.arrayToDataTable([
+                ['Ano', 'Incêndios (%)'],
+                ['2019',  20],
+                ['2020',  50],
+                ['2021', -20],
+                ['2022', -15]
+            ]);
+
+            // Definindo opções do gráfico
+            var options = {
+                title: 'Número de Incêndios nos Últimos Anos',
+                hAxis: {title: 'Ano'},
+                vAxis: {title: 'Incêndios (%)'},
+                legend: 'none',
+                colors: ['#FF5722']
+            };
+
+            // Criando o gráfico de barras e anexando-o ao div
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body class="background"> <!-- A classe background foi adicionada aqui -->
+
+    <h1 class="h1">Gráfico de Porcentagem de Incêndios</h1>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+
+</body>
+</html>
